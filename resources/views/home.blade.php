@@ -16,42 +16,41 @@
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="tambah" data-bs-target="#exampleModal">
         Tambah Data
-      </button>
+    </button>
 </div>
 <!-- Button trigger modal -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Baru</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Baru</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">No. Telpon</label>
+                    <input type="text" class="form-control" id="telp"  name="telp" placeholder="Masukkan Nomor Telpon">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Alamat</label>
+                <textarea name="alamat" class="form-control" id="alamat" cols="30" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="simpan" class="btn btn-primary">Simpan</button>
+            </div>
         </div>
-        <div class="modal-body">
-            @csrf
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
-                <input type="hidden" id="id" name="id">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">No. Telpon</label>
-                <input type="text" class="form-control" id="telp"  name="telp" placeholder="Masukkan Nomor Telpon">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-               <textarea name="alamat" class="form-control" id="alamat" cols="30" rows="5"></textarea>
-              </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="simpan" class="btn btn-primary">Simpan</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -65,7 +64,7 @@
     function isi() {
         $('#tabel1').DataTable({
             serverside : true,
-            responseive : true,
+            responsive : true,
             ajax : {
                 url : "{{route('data')}}"
             },
@@ -80,19 +79,17 @@
                     {data: 'telp', name: 'telp'},
                     {data: 'alamat', name: 'alamat'},
                     {data: 'aksi', name: 'aksi'}
-                ]
+                ],
         })
     }
-
-
 </script>
+
 <script>
     $('#simpan').on('click',function () {
         if ($(this).text() === 'Simpan Edit') {
-            // console.log('Edit');
-           edits()
+            edits()
         } else {
-          tambah()
+            tambah()
         }
 
 

@@ -26,10 +26,6 @@ class DataController extends Controller
 
     public function store(Request $request)
     {
-        //         "nama" => "Fauziah Benamen"
-        //   "telp" => "07880707077"
-        //   "alamat" => "jl. Jalan"
-        // dd($request->all());
         $data = new Data();
         $data->name = $request->nama;
         $data->telp = $request->telp;
@@ -45,8 +41,6 @@ class DataController extends Controller
     /**
      * edits 
      * Ambil Data
-     * @param  mixed $request->id
-     * @return void
      */
     public function edits(Request $request)
     {
@@ -58,8 +52,6 @@ class DataController extends Controller
     /**
      * Ubah Data
      *
-     * @param  mixed $var
-     * @return void
      */
     public function updates(Request $request)
     {
@@ -82,8 +74,6 @@ class DataController extends Controller
     /**
      * hapus
      *
-     * @param  mixed $request
-     * @return void
      */
     public function hapus(Request $request)
     {
